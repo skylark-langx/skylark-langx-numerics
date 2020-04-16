@@ -22,7 +22,8 @@
   "bugs": "https://github.com/skylarklangx/skylark-langx/issues",
   "dependencies": {
     "skylark-langx-ns": "https://github.com/skylark-langx/skylark-langx-ns#master",
-    "skylark-langx-types": "https://github.com/skylark-langx/skylark-langx-types#master"
+    "skylark-langx-types": "https://github.com/skylark-langx/skylark-langx-types#master",
+    "skylark-langx-maths": "https://github.com/skylark-langx/skylark-langx-maths#master"
   },
   "engines": {
     "node": ">=0.8.0"
