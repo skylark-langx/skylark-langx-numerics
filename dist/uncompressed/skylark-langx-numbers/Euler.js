@@ -248,7 +248,7 @@ define([
 
 			} else {
 
-				console.warn( 'THREE.Euler: .setFromRotationMatrix() given unsupported order: ' + order );
+				console.warn( 'skylark-nunustudio/editor/gui/element/RendererCanvasEuler: .setFromRotationMatrix() given unsupported order: ' + order );
 
 			}
 

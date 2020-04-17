@@ -444,5 +444,5 @@ define([
 	} );
 
 
-	return number.Vector2 = Vector2 ;
+	return numbers.Vector2 = Vector2 ;
 });
