@@ -5,5 +5,5 @@
  * @link www.skylarkjs.org
  * @license MIT
  */
-define(["./numbers"],function(n){return n});
+define(["./numerics"],function(n){return n});
 //# sourceMappingURL=sourcemaps/main.js.map

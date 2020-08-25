@@ -1,5 +1,5 @@
 define([
-	"./numbers"
-],function(numbers){
-	return numbers;
+	"./numerics"
+],function(numerics){
+	return numerics;
 });

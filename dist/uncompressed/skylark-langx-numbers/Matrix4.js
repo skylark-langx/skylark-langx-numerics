@@ -1,8 +1,8 @@
 define([
-	"./numbers",
+	"./numerics",
 	"./Vector3"
 ] ,function(
-	numbers,
+	numerics,
 	Vector3
 ) {
 
@@ -882,6 +882,6 @@ define([
 	} );
 
 
-	return numbers.Matrix4 =  Matrix4 ;
+	return numerics.Matrix4 =  Matrix4 ;
 
 });

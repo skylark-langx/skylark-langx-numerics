@@ -1,9 +1,9 @@
 define([
-	"./numbers",
+	"./numerics",
 	"./Matrix3",
 	"./Vector3"
 ] ,function(
-	numbers,
+	numerics,
 	Matrix3,
 	Vector3
 ) {
@@ -230,6 +230,6 @@ define([
 	} );
 
 
-	return numbers.Plane = Plane;
+	return numerics.Plane = Plane;
 
 });

@@ -138,7 +138,7 @@ define([
 	    : (reIsBadHex.test(value) ? NAN : +value);
 	}
 
-	return  skylark.attach("langx.numbers",{
+	return  skylark.attach("langx.numerics",{
 		toFinite : toFinite,
 		toNumber : toNumber,
 		toInteger : toInteger

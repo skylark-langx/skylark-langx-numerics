@@ -1,6 +1,6 @@
 define([
-	"./numbers"
-] ,function(numbers) {
+	"./numerics"
+] ,function(numerics) {
 	function Matrix3() {
 
 		this.elements = [
@@ -349,7 +349,7 @@ define([
 	} );
 
 
-	return numbers.Matrix3 = Matrix3;
+	return numerics.Matrix3 = Matrix3;
 
 
 });

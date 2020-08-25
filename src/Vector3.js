@@ -1,10 +1,10 @@
 define([
 	"skylark-langx-maths",
-	"./numbers",
+	"./numerics",
 	"./Quaternion"
 ] ,function(
 	maths,
-	numbers,
+	numerics,
 	Quaternion
 ) {
 
@@ -714,7 +714,7 @@ define([
 	} );
 
 
-	return numbers.Vector3 = Vector3;
+	return numerics.Vector3 = Vector3;
 
 
 });

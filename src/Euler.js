@@ -1,12 +1,12 @@
 define([
 	"skylark-langx-maths",
-	"./numbers",
+	"./numerics",
 	"./Quaternion",
 	"./Vector3",
 	"./Matrix4"
 ] ,function(
 	maths,
-	numbers,
+	numerics,
 	Quaternion,
 	Vector3,
 	Matrix4
@@ -344,5 +344,5 @@ define([
 	} );
 
 
-	return numbers.Euler = Euler ;
+	return numerics.Euler = Euler ;
 });

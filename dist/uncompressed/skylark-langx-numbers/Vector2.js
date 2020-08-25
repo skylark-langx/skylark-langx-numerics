@@ -1,6 +1,6 @@
 define([
-	"./numbers"
-] ,function(numbers) {
+	"./numerics"
+] ,function(numerics) {
 
 
 	function Vector2( x, y ) {
@@ -444,5 +444,5 @@ define([
 	} );
 
 
-	return numbers.Vector2 = Vector2 ;
+	return numerics.Vector2 = Vector2 ;
 });

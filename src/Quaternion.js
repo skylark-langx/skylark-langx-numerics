@@ -1,7 +1,7 @@
 define([
 	"skylark-langx-maths",
-	"./numbers"
-] ,function(maths,numbers) {
+	"./numerics"
+] ,function(maths,numerics) {
 
 
 	function Quaternion( x, y, z, w ) {
@@ -639,7 +639,7 @@ define([
 	} );
 
 
-	return numbers.Quaternion = Quaternion;
+	return numerics.Quaternion = Quaternion;
 
 
 })

@@ -75,7 +75,7 @@
   factory(define,require);
 
   if (!isAmd) {
-    var skylarkjs = require("skylark-langx/skylark");
+    var skylarkjs = require("skylark-langx-ns");
 
     if (isCmd) {
       module.exports = skylarkjs;
@@ -86,7 +86,7 @@
 
 })(function(define,require) {
 
-define('skylark-langx-numbers/numbers',[
+define('skylark-langx-numbers/numerics',[
     "skylark-langx-ns",
     "skylark-langx-types"
 ],function(skylark,types){
@@ -226,16 +226,16 @@ define('skylark-langx-numbers/numbers',[
 	    : (reIsBadHex.test(value) ? NAN : +value);
 	}
 
-	return  skylark.attach("langx.numbers",{
+	return  skylark.attach("langx.numerics",{
 		toFinite : toFinite,
 		toNumber : toNumber,
 		toInteger : toInteger
 	});
 });
 define('skylark-langx-numbers/main',[
-	"./numbers"
-],function(numbers){
-	return numbers;
+	"./numerics"
+],function(numerics){
+	return numerics;
 });
 define('skylark-langx-numbers', ['skylark-langx-numbers/main'], function (main) { return main; });
 

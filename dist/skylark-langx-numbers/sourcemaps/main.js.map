@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.js"],"names":["define","numbers"],"mappings":";;;;;;;AAAAA,QACC,aACC,SAASC,GACV,OAAOA","file":"../main.js","sourcesContent":["define([\r\n\t\"./numbers\"\r\n],function(numbers){\r\n\treturn numbers;\r\n});"]}
+{"version":3,"sources":["main.js"],"names":["define","numerics"],"mappings":";;;;;;;AAAAA,QACC,cACC,SAASC,GACV,OAAOA","file":"../main.js","sourcesContent":["define([\r\n\t\"./numerics\"\r\n],function(numerics){\r\n\treturn numerics;\r\n});"]}
