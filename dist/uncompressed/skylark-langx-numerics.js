@@ -1,5 +1,5 @@
 /**
- * skylark-langx-numbers - The skylark JavaScript language extension library.
+ * skylark-langx-numerics - The skylark JavaScript language extension library.
  * @author Hudaokeji Co.,Ltd
  * @version v0.9.0
  * @link www.skylarkjs.org
@@ -86,7 +86,7 @@
 
 })(function(define,require) {
 
-define('skylark-langx-numbers/numerics',[
+define('skylark-langx-numerics/numerics',[
     "skylark-langx-ns",
     "skylark-langx-types"
 ],function(skylark,types){
@@ -97,13 +97,13 @@ define('skylark-langx-numbers/numerics',[
 		toInteger : types.toInteger
 	});
 });
-define('skylark-langx-numbers/main',[
+define('skylark-langx-numerics/main',[
 	"./numerics"
 ],function(numerics){
 	return numerics;
 });
-define('skylark-langx-numbers', ['skylark-langx-numbers/main'], function (main) { return main; });
+define('skylark-langx-numerics', ['skylark-langx-numerics/main'], function (main) { return main; });
 
 
 },this);
-//# sourceMappingURL=sourcemaps/skylark-langx-numbers.js.map
+//# sourceMappingURL=sourcemaps/skylark-langx-numerics.js.map
