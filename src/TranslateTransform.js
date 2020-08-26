@@ -1,6 +1,6 @@
 define([
     "skylark-langx/langx",
-    "../numerics",
+    "./numerics",
     "./Transform",
     "./Matrix"
 ],function(langx,numerics,Transform,Matrix,Point,Rect) {

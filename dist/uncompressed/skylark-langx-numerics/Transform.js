@@ -1,6 +1,6 @@
 define([
     "skylark-langx/langx",
-    "../numerics",
+    "./numerics",
 	"./Matrix"
 ], function(langx,numerics, Matrix) {
 

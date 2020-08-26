@@ -1,6 +1,6 @@
 define([
     "skylark-langx/langx",
-    "../numerics",
+    "./numerics",
 	"./Transform",
 	"../Point",
 	"../Rect"

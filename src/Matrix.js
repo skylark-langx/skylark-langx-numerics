@@ -1,7 +1,7 @@
 define( [
     "skylark-langx-objects",
     "skylark-langx-klass",
-    "../numerics",
+    "./numerics",
     "./Vector2"
 ], function(objects,klass,numerics,Vector2){
 	// reference easeljs/numerics/Matrix2D  and dojox/gfx/matrix
@@ -112,10 +112,10 @@ define( [
         },
 
         //Converts the specified point with Matrix and returns the result.
-		multiplyPoint: /*Point*/function(/*Point */ p){
+		multiplyPoint: /*Vector2*/function(/*Vector2 */ p){
 			// summary:
 			//		applies the matrix to a point
-			return this._multiplyPoint(p); // Point
+			return this._multiplyPoint(p); // Vector2
 		},
 				/**
 				 * 指定した矩形を Matrix で変換し、その結果を返します。
