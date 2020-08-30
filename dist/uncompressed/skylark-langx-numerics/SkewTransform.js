@@ -1,5 +1,5 @@
 define([
-    "../numerics",
+    "./numerics",
     "./Transform",
     "./MatrixTransform"
 ], function(numerics, Transform, Matrix) {
