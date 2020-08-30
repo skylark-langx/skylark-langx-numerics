@@ -9,7 +9,6 @@ define([
 ) {
 
 	var _v1 = new Vector3();
-	var _m1 = new Matrix4();
 	var _zero = new Vector3( 0, 0, 0 );
 	var _one = new Vector3( 1, 1, 1 );
 	var _x = new Vector3();
@@ -882,8 +881,7 @@ define([
 
 	});
 
-
-
+	var _m1 = new Matrix4();
 
 	return numerics.Matrix4 =  Matrix4 ;
 

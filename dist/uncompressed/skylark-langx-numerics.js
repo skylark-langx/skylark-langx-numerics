@@ -292,7 +292,7 @@ define('skylark-langx-numerics/Quaternion',[
 	"skylark-langx-klass",
 	"./numerics",
 	"./maths"
-] ,function(klasss,numerics,maths) {
+] ,function(klass,numerics,maths) {
 
 	var Quaternion = klass({
 		"klassName" : "Quaternion",
@@ -950,8 +950,6 @@ define('skylark-langx-numerics/Vector3',[
 	Quaternion
 ) {
 
-
-	var _vector = new Vector3();
 	var _quaternion = new Quaternion();
 
 	var Vector3 = klass({
@@ -1657,6 +1655,8 @@ define('skylark-langx-numerics/Vector3',[
 
 	});
 
+	var _vector = new Vector3();
+
 
 	return numerics.Vector3 = Vector3;
 });
@@ -1671,7 +1671,6 @@ define('skylark-langx-numerics/Matrix4',[
 ) {
 
 	var _v1 = new Vector3();
-	var _m1 = new Matrix4();
 	var _zero = new Vector3( 0, 0, 0 );
 	var _one = new Vector3( 1, 1, 1 );
 	var _x = new Vector3();
@@ -2544,8 +2543,7 @@ define('skylark-langx-numerics/Matrix4',[
 
 	});
 
-
-
+	var _m1 = new Matrix4();
 
 	return numerics.Matrix4 =  Matrix4 ;
 
@@ -4281,14 +4279,14 @@ define( 'skylark-langx-numerics/TransformMatrix',[
             }
         },
 
-        //Converts the specified point with Matrix and returns the result.
+        //Converts the specified point with TransformMatrix and returns the result.
 		multiplyPoint: /*Vector2*/function(/*Vector2 */ p){
 			// summary:
 			//		applies the matrix to a point
 			return this._multiplyPoint(p); // Vector2
 		},
 				/**
-				 * 指定した矩形を Matrix で変換し、その結果を返します。
+				 * 指定した矩形を TransformMatrix で変換し、その結果を返します。
 				 */
 		multiplyRectangle: /*Rect*/function(/*Rect*/ rect){
 			// summary:
@@ -4315,7 +4313,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * @param {Number} m22
 		 * @param {Number} dx
 		 * @param {Number} dy
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		 **/
 		prepend : function(m11, m12, m21, m22, dx, dy) {
 			var tx1 = this.dx;
@@ -4342,7 +4340,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * @param {Number} m22
 		 * @param {Number} dx
 		 * @param {Number} dy
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		 **/
 		append : function(m11, m12, m21, m22, dx, dy) {
 			var a1 = this.m11;
@@ -4362,7 +4360,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		/**
 		 * Prepends the specified matrix with this matrix.
 		 * @method prependMatrix
-		 * @param {Matrix} matrix
+		 * @param {TransformMatrix} matrix
 		 **/
 		prependMatrix : function(matrix) {
 			this.prepend(matrix.m11, matrix.m12, matrix.m21, matrix.m22, matrix.dx, matrix.dy);
@@ -4374,8 +4372,8 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * Appends the specified matrix with this matrix.
 		 * 指定した Matrixをこの Matrixに追加します。
 		 * @method appendMatrix
-		 * @param {Matrix} matrix
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @param {TransformMatrix} matrix
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		 **/
 		appendMatrix : function(matrix) {
 			this.append(matrix.m11, matrix.m12, matrix.m21, matrix.m22, matrix.dx, matrix.dy);
@@ -4385,7 +4383,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 
 		/**
 		 * Generates matrix properties from the specified display object transform properties, and prepends them with this matrix.
-		 * For example, you can use this to generate a matrix from a display object: var mtx = new Matrix();
+		 * For example, you can use this to generate a matrix from a display object: var mtx = new TransformMatrix();
 		 * mtx.prependTransform(o.x, o.y, o.scaleX, o.scaleY, o.rotation);
 		 * @method prependTransform
 		 * @param {Number} x
@@ -4397,7 +4395,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * @param {Number} skewY
 		 * @param {Number} regX Optional.
 		 * @param {Number} regY Optional.
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		 **/
 		prependTransform : function(x, y, scaleX, scaleY, rotation, skewX, skewY, regX, regY) {
 			if (rotation%360) {
@@ -4427,7 +4425,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 
 		/**
 		 * Generates matrix properties from the specified display object transform properties, and appends them with this matrix.
-		 * For example, you can use this to generate a matrix from a display object: var mtx = new Matrix();
+		 * For example, you can use this to generate a matrix from a display object: var mtx = new TransformMatrix();
 		 * mtx.appendTransform(o.x, o.y, o.scaleX, o.scaleY, o.rotation);
 		 * @method appendTransform
 		 * @param {Number} x
@@ -4439,7 +4437,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * @param {Number} skewY
 		 * @param {Number} regX Optional.
 		 * @param {Number} regY Optional.
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		 **/
 		appendTransform : function(x, y, scaleX, scaleY, rotation, skewX, skewY, regX, regY) {
 			if (rotation%360) {
@@ -4471,10 +4469,9 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 
 		/**
 		 * Applies a rotation transformation to the matrix.
-		 * この Matrix の原点を中心とする指定した角度の回転を適用します。
 		 * @method rotate
 		 * @param {Number} angle The angle in degrees.
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		 **/
 		rotate : function(angle) {
 			var cos = Math.cos(angle);
@@ -4498,7 +4495,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * @method skew
 		 * @param {Number} skewX The amount to skew horizontally in degrees.
 		 * @param {Number} skewY The amount to skew vertically in degrees.
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		*/
 		skew : function(skewX, skewY) {
 			skewX = skewX*DEG_TO_RAD;
@@ -4512,7 +4509,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * @method scale
 		 * @param {Number} x
 		 * @param {Number} y
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		 **/
 		scale : function(x, y) {
 			this.m11 *= x;
@@ -4527,7 +4524,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * @method translate
 		 * @param {Number} x
 		 * @param {Number} y
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		 **/
 		translate : function(x, y) {
 			this.dx += x;
@@ -4538,7 +4535,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		/**
 		 * Sets the properties of the matrix to those of an identity matrix (one that applies a null transformation).
 		 * @method identity
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		 **/
 		identity : function() {
 			this.alpha = this.m11 = this.m22 = 1;
@@ -4550,7 +4547,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		/**
 		 * Inverts the matrix, causing it to perform the opposite transformation.
 		 * @method invert
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		 **/
 		invert : function() {
 			var a1 = this.m11;
@@ -4584,7 +4581,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * results.
 		 * @method decompose
 		 * @param {Object} target The object to apply the transform properties to. If null, then a new object will be returned.
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		*/
 		decompose : function(target) {
 			// TODO: it would be nice to be able to solve for whether the matrix can be decomposed into only scale/rotation
@@ -4623,7 +4620,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * @param {Number} alpha desired alpha value
 		 * @param {Shadow} shadow desired shadow value
 		 * @param {String} compositeOperation desired composite operation value
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		*/
 		reinitialize : function(m11,m12,m21,m22,dx,dy,alpha,shadow,compositeOperation) {
 			this._initialize(m11,m12,m21,m22,dx,dy);
@@ -4639,7 +4636,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * @param {Number} alpha desired alpha value
 		 * @param {Shadow} shadow desired shadow value
 		 * @param {String} compositeOperation desired composite operation value
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		*/
 		appendProperties : function(alpha, shadow, compositeOperation) {
 			this.alpha *= alpha;
@@ -4654,7 +4651,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 * @param {Number} alpha desired alpha value
 		 * @param {Shadow} shadow desired shadow value
 		 * @param {String} compositeOperation desired composite operation value
-		 * @return {Matrix} This matrix. Useful for chaining method calls.
+		 * @return {TransformMatrix} This matrix. Useful for chaining method calls.
 		*/
 		prependProperties : function(alpha, shadow, compositeOperation) {
 			this.alpha *= alpha;
@@ -4664,12 +4661,12 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		},
 
 		/**
-		 *Multiply Matrix by another Matrix.
+		 *Multiply TransformMatrix by another TransformMatrix.
 		 */
 		multiply: function(matrix){
 			// summary:
 			//		combines matrices by multiplying them sequentially in the given order
-			// matrix: Matrix
+			// matrix: TransformMatrix
 			//		a 2D matrix-like object,
 			//		all subsequent arguments are matrix-like objects too
 
@@ -4682,18 +4679,18 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			this.m22 = m12 * r.m21 + m22 * r.m22;
 			this.dx =  m11 * r.dx + m21 * r.dy + dx;
 			this.dy =  m12 * r.dx + m22 * r.dy + dy;
-			return this // Matrix
+			return this // TransformMatrix
 		},
 
 		/**
-		 * Returns a clone of the Matrix instance.
+		 * Returns a clone of the TransformMatrix instance.
 		 * @method clone
-		 * @return {Matrix} a clone of the Matrix instance.
+		 * @return {TransformMatrix} a clone of the TransformMatrix instance.
 		 **/
 		clone : function() {
 
 			var _ = this._,
-				mtx = new Matrix(_.m11, _.m12, _.m21, _.m22, _.dx, _.dy);
+				mtx = new TransformMatrix(_.m11, _.m12, _.m21, _.m22, _.dx, _.dy);
 			mtx.shadow = this.shadow;
 			mtx.alpha = this.alpha;
 			mtx.compositeOperation = this.compositeOperation;
@@ -4707,7 +4704,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		 **/
 		toString : function() {
 			var _ = this._;
-			return "[Matrix (m11="+_.m11+" m12="+_.m12+" m21="+_.m21+" m22="+_.m22+" dx="+_.dx+" dy="+_.dy+")]";
+			return "[TransformMatrix (m11="+_.m11+" m12="+_.m12+" m21="+_.m21+" m22="+_.m22+" dx="+_.dx+" dy="+_.dy+")]";
 		},
 		
 		"_construct" : function(m11, m12, m21, m22, dx, dy) {
@@ -4722,7 +4719,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 
 	});
 	
-	Object.assign(Matrix,{
+	Object.assign(TransformMatrix,{
 		translate: function(a, b){
 			// summary:
 			//		forms a translation matrix
@@ -4732,7 +4729,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		an x coordinate value
 			// b: Number
 			//		a y coordinate value
-			// returns: Matrix
+			// returns: TransformMatrix
 			//|----------| |-----------|
 			//|m11|m21|dx| |  1|   0| a|
 			//|----------| |-----------|
@@ -4741,7 +4738,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//|  0|  0| 1| |  0|   0| 1|
 			//|----------| |-----------|
 
-			return new Matrix(1,0,0,1,a,b); // Matrix
+			return new TransformMatrix(1,0,0,1,a,b); // TransformMatrix
 		},
 		scale: function(a, b){
 			// summary:
@@ -4752,7 +4749,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		a scaling factor used for the x coordinate
 			// b: Number?
 			//		a scaling factor used for the y coordinate
-			// returns: Matrix
+			// returns: TransformMatrix
 			//|----------| |-----------|
 			//|m11|m21|dx| |  a|   0| 0|
 			//|----------| |-----------|
@@ -4760,7 +4757,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//|----------| |-----------|
 			//|  0|  0| 1| |  0|   0| 1|
 			//|----------| |-----------|
-			return new Matrix(a,0,0,b?b:a,0,0); // Matrix
+			return new TransformMatrix(a,0,0,b?b:a,0,0); // TransformMatrix
 		},
 		rotate: function(angle){
 			// summary:
@@ -4770,7 +4767,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		around the origin of coordinates (0, 0) by specified angle.
 			// angle: Number
 			//		an angle of rotation in radians (>0 for CW)
-			// returns: Matrix
+			// returns: TransformMatrix
 			//|----------| |-----------|
 			//|m11|m21|dx| |cos|-sin| 0|
 			//|----------| |-----------|
@@ -4780,7 +4777,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//|----------| |-----------|
 			var cos = Math.cos(angle);
 			var sin = Math.sin(angle);
-			return new Matrix(cos,sin,-sin,cos,0,0); // Matrix
+			return new TransformMatrix(cos,sin,-sin,cos,0,0); // TransformMatrix
 		},
 		rotateg: function(degree){
 			// summary:
@@ -4791,8 +4788,8 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		Seerotate() for comparison.
 			// degree: Number
 			//		an angle of rotation in degrees (>0 for CW)
-			// returns: Matrix
-			return this.rotate(degToRad(degree)); // Matrix
+			// returns: TransformMatrix
+			return this.rotate(degToRad(degree)); // TransformMatrix
 		},
 		skewX: function(angle) {
 			//TODO : will be modified
@@ -4803,7 +4800,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		around the origin of coordinates (0, 0) by specified angle.
 			// angle: Number
 			//		a skewing angle in radians
-			// returns: Matrix
+			// returns: TransformMatrix
 			//|----------| |-----------|
 			//|m11|m21|dx| |  1| tan| 0|
 			//|----------| |-----------|
@@ -4812,7 +4809,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//|  0|  0| 1| |  0|   0| 1|
 			//|----------| |-----------|
 			var tan = Math.tan(angle);
-			return new Matrix(1,0,tan,1); // Matrix
+			return new TransformMatrix(1,0,tan,1); // TransformMatrix
 		},
 		skewXg: function(degree){
 			//TODO : will be modified
@@ -4824,8 +4821,8 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		See dojox/gfx/matrix.skewX() for comparison.
 			// degree: Number
 			//		a skewing angle in degrees
-			// returns: Matrix
-			return this.skewX(degToRad(degree)); // dojox/gfx/matrix.Matrix
+			// returns: TransformMatrix
+			return this.skewX(degToRad(degree)); // dojox/gfx/matrix.TransformMatrix
 		},
 		skewY: function(angle){
 			//TODO : will be modified
@@ -4836,7 +4833,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		around the origin of coordinates (0, 0) by specified angle.
 			// angle: Number
 			//		a skewing angle in radians
-			// returns: Matrix
+			// returns: TransformMatrix
 			//|----------| |-----------|
 			//|m11|m21|dx| |  1|   0| 0|
 			//|----------| |-----------|
@@ -4846,7 +4843,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//|----------| |-----------|
 			var tan = Math.tan(angle);
 
-			return new Matrix(1,tan,0,1); // Matrix
+			return new TransformMatrix(1,tan,0,1); // TransformMatrix
 		},
 		skewYg: function(degree){
 			//TODO : will be modified
@@ -4858,8 +4855,8 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		See skewY() for comparison.
 			// degree: Number
 			//		a skewing angle in degrees
-			// returns: Matrix
-			return this.skewY(degToRad(degree)); // Matrix
+			// returns: TransformMatrix
+			return this.skewY(degToRad(degree)); // TransformMatrix
 		},
 		reflect: function(a, b){
 			// summary:
@@ -4871,7 +4868,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		a point-like object, which specifies a vector of reflection, or an X value
 			// b: Number?
 			//		a Y value
-			// returns: Matrix
+			// returns: TransformMatrix
 			if(arguments.length == 1){
 				b = a.y;
 				a = a.x;
@@ -4882,7 +4879,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 				xy = 2 * a * b / n2,
 				yx = xy,
 				yy = 2 * b2 / n2 - 1;
-			return new Matrix(xx,yx,xy, yy); // Matrix
+			return new TransformMatrix(xx,yx,xy, yy); // TransformMatrix
 		},
 		project: function(a, b){
 			// summary:
@@ -4894,7 +4891,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		an x coordinate value
 			// b: Number?
 			//		a y coordinate value
-			// returns: Matrix
+			// returns: TransformMatrix
 
 			// make a unit vector
 			var a2 = a * a, b2 = b * b, n2 = a2 + b2, 
@@ -4902,7 +4899,7 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 				xy = a * b / n2
 				yx = xy,
 				yy = b2 / n2;
-			return new Matrix(xx,yx,xy,yy); // Matrix
+			return new TransformMatrix(xx,yx,xy,yy); // TransformMatrix
 		},
 
 		// common operations
@@ -4912,14 +4909,14 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 		_sandwich: function(matrix, x, y){
 			// summary:
 			//		applies a matrix at a central point
-			// matrix: Matrix
+			// matrix: TransformMatrix
 			//		a 2D matrix-like object, which is applied at a central point
 			// x: Number
 			//		an x component of the central point
 			// y: Number
 			//		a y component of the central point
 			return this.translate(x, y).multiply(matrix)
-			                           .multiply(this.translate(-x, -y)); // Matrix
+			                           .multiply(this.translate(-x, -y)); // TransformMatrix
 		},
 		scaleAt: function(a, b, c, d){
 			// summary:
@@ -4934,18 +4931,18 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		an x component of a central point, or a central point
 			// d: Number
 			//		a y component of a central point
-			// returns: Matrix
+			// returns: TransformMatrix
 			switch(arguments.length){
 				case 4:
 					// a and b are scale factor components, c and d are components of a point
-					return this._sandwich(this.scale(a, b), c, d); // Matrix
+					return this._sandwich(this.scale(a, b), c, d); // TransformMatrix
 				case 3:
 					if(typeof c == "number"){
-						return this._sandwich(this.scale(a), b, c); // Matrix
+						return this._sandwich(this.scale(a), b, c); // TransformMatrix
 					}
-					return this._sandwich(this.scale(a, b), c.x, c.y); // Matrix
+					return this._sandwich(this.scale(a, b), c.x, c.y); // TransformMatrix
 			}
-			return this._sandwich(this.scale(a), b.x, b.y); // Matrix
+			return this._sandwich(this.scale(a), b.x, b.y); // TransformMatrix
 		},
 		rotateAt: function(angle, a, b){
 			// summary:
@@ -4958,11 +4955,11 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		an x component of a central point, or a central point
 			// b: Number?
 			//		a y component of a central point
-			// returns: Matrix
+			// returns: TransformMatrix
 			if(arguments.length > 2){
-				return this._sandwich(this.rotate(angle), a, b); // Matrix
+				return this._sandwich(this.rotate(angle), a, b); // TransformMatrix
 			}
-			return this._sandwich(this.rotate(angle), a.x, a.y); // Matrix
+			return this._sandwich(this.rotate(angle), a.x, a.y); // TransformMatrix
 		},
 		rotategAt: function(degree, a, b){
 			// summary:
@@ -4975,11 +4972,11 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		an x component of a central point, or a central point
 			// b: Number?
 			//		a y component of a central point
-			// returns: Matrix
+			// returns: TransformMatrix
 			if(arguments.length > 2){
-				return this._sandwich(this.rotateg(degree), a, b); // Matrix
+				return this._sandwich(this.rotateg(degree), a, b); // TransformMatrix
 			}
-			return this._sandwich(this.rotateg(degree), a.x, a.y); // Matrix
+			return this._sandwich(this.rotateg(degree), a.x, a.y); // TransformMatrix
 		},
 		skewXAt: function(angle, a, b){
 			// summary:
@@ -4992,11 +4989,11 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		an x component of a central point, or a central point
 			// b: Number?
 			//		a y component of a central point
-			// returns: Matrix
+			// returns: TransformMatrix
 			if(arguments.length > 2){
-				return this._sandwich(this.skewX(angle), a, b); // Matrix
+				return this._sandwich(this.skewX(angle), a, b); // TransformMatrix
 			}
-			return this._sandwich(this.skewX(angle), a.x, a.y); // Matrix
+			return this._sandwich(this.skewX(angle), a.x, a.y); // TransformMatrix
 		},
 		skewXgAt: function(degree, a, b){
 			// summary:
@@ -5009,11 +5006,11 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		an x component of a central point, or a central point
 			// b: Number?
 			//		a y component of a central point
-			// returns: Matrix
+			// returns: TransformMatrix
 			if(arguments.length > 2){
-				return this._sandwich(this.skewXg(degree), a, b); // Matrix
+				return this._sandwich(this.skewXg(degree), a, b); // TransformMatrix
 			}
-			return this._sandwich(this.skewXg(degree), a.x, a.y); // Matrix
+			return this._sandwich(this.skewXg(degree), a.x, a.y); // TransformMatrix
 		},
 		skewYAt: function(angle, a, b){
 			// summary:
@@ -5026,11 +5023,11 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		an x component of a central point, or a central point
 			// b: Number?
 			//		a y component of a central point
-			// returns: Matrix
+			// returns: TransformMatrix
 			if(arguments.length > 2){
-				return this._sandwich(this.skewY(angle), a, b); // Matrix
+				return this._sandwich(this.skewY(angle), a, b); // TransformMatrix
 			}
-			return this._sandwich(this.skewY(angle), a.x, a.y); // Matrix
+			return this._sandwich(this.skewY(angle), a.x, a.y); // TransformMatrix
 		},
 		skewYgAt: function(/* Number */ degree, /* Number||Point */ a, /* Number? */ b){
 			// summary:
@@ -5043,11 +5040,11 @@ define( 'skylark-langx-numerics/TransformMatrix',[
 			//		an x component of a central point, or a central point
 			// b: Number?
 			//		a y component of a central point
-			// returns: Matrix
+			// returns: TransformMatrix
 			if(arguments.length > 2){
-				return this._sandwich(this.skewYg(degree), a, b); // Matrix
+				return this._sandwich(this.skewYg(degree), a, b); // TransformMatrix
 			}
-			return this._sandwich(this.skewYg(degree), a.x, a.y); // Matrix
+			return this._sandwich(this.skewYg(degree), a.x, a.y); // TransformMatrix
 		}
 	
 	

@@ -2,7 +2,7 @@ define([
 	"skylark-langx-klass",
 	"./numerics",
 	"./maths"
-] ,function(klasss,numerics,maths) {
+] ,function(klass,numerics,maths) {
 
 	var Quaternion = klass({
 		"klassName" : "Quaternion",

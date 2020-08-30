@@ -10,8 +10,6 @@ define([
 	Quaternion
 ) {
 
-
-	var _vector = new Vector3();
 	var _quaternion = new Quaternion();
 
 	var Vector3 = klass({
@@ -716,6 +714,8 @@ define([
 		}
 
 	});
+
+	var _vector = new Vector3();
 
 
 	return numerics.Vector3 = Vector3;
