@@ -1,53 +1,10 @@
 define([
+	"skylark-langx-klass",
 	"./numerics"
-] ,function(numerics) {
+] ,function(klass,numerics) {
 
-	function Vector4( x, y, z, w ) {
-
-		this.x = x || 0;
-		this.y = y || 0;
-		this.z = z || 0;
-		this.w = ( w !== undefined ) ? w : 1;
-
-	}
-
-	Object.defineProperties( Vector4.prototype, {
-
-		"width": {
-
-			get: function () {
-
-				return this.z;
-
-			},
-
-			set: function ( value ) {
-
-				this.z = value;
-
-			}
-
-		},
-
-		"height": {
-
-			get: function () {
-
-				return this.w;
-
-			},
-
-			set: function ( value ) {
-
-				this.w = value;
-
-			}
-
-		}
-
-	} );
-
-	Object.assign( Vector4.prototype, {
+	var Vector4 = klass({
+		"klassName" : "Vector4",
 
 		set: function ( x, y, z, w ) {
 
@@ -57,7 +14,6 @@ define([
 			this.w = w;
 
 			return this;
-
 		},
 
 		setScalar: function ( scalar ) {
@@ -116,7 +72,6 @@ define([
 			}
 
 			return this;
-
 		},
 
 		getComponent: function ( index ) {
@@ -640,10 +595,57 @@ define([
 
 			return this;
 
+		},
+
+
+		"_construct" :function ( x, y, z, w ) {
+
+			this.x = x || 0;
+			this.y = y || 0;
+			this.z = z || 0;
+			this.w = ( w !== undefined ) ? w : 1;
+
+		}
+
+	});
+
+/*
+	Object.defineProperties( Vector4.prototype, {
+
+		"width": {
+
+			get: function () {
+
+				return this.z;
+
+			},
+
+			set: function ( value ) {
+
+				this.z = value;
+
+			}
+
+		},
+
+		"height": {
+
+			get: function () {
+
+				return this.w;
+
+			},
+
+			set: function ( value ) {
+
+				this.w = value;
+
+			}
+
 		}
 
 	} );
-
+*/
 
 	return numerics.Vector4 = Vector4 ;
 

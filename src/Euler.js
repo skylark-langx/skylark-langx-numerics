@@ -1,36 +1,23 @@
 define([
-	"skylark-langx-maths",
+	"skylark-langx-klass",
 	"./numerics",
+	"./maths",
 	"./Quaternion",
 	"./Vector3",
 	"./Matrix4"
 ] ,function(
-	maths,
+	klass,
 	numerics,
+	maths,
 	Quaternion,
 	Vector3,
 	Matrix4
 ) {
 
-
 	var _matrix = new Matrix4();
 	var _quaternion = new Quaternion();
 
-	function Euler( x, y, z, order ) {
-
-		this._x = x || 0;
-		this._y = y || 0;
-		this._z = z || 0;
-		this._order = order || Euler.DefaultOrder;
-
-	}
-
-	Euler.RotationOrders = [ 'XYZ', 'YZX', 'ZXY', 'XZY', 'YXZ', 'ZYX' ];
-
-	Euler.DefaultOrder = 'XYZ';
-
-	Object.defineProperties( Euler.prototype, {
-
+	var Euler = klass({
 		x: {
 
 			get: function () {
@@ -97,11 +84,7 @@ define([
 
 			}
 
-		}
-
-	} );
-
-	Object.assign( Euler.prototype, {
+		},
 
 		isEuler: true,
 
@@ -339,9 +322,25 @@ define([
 
 		},
 
-		_onChangeCallback: function () {}
+		_onChangeCallback: function () {},
 
-	} );
+
+		"_construct" : function ( x, y, z, order ) {
+
+			this._x = x || 0;
+			this._y = y || 0;
+			this._z = z || 0;
+			this._order = order || Euler.DefaultOrder;
+
+		}
+
+
+	});
+
+
+	Euler.RotationOrders = [ 'XYZ', 'YZX', 'ZXY', 'XZY', 'YXZ', 'ZYX' ];
+
+	Euler.DefaultOrder = 'XYZ';
 
 
 	return numerics.Euler = Euler ;

@@ -1,25 +1,10 @@
 define([
+	"skylark-langx-klass",
 	"./numerics"
-] ,function(numerics) {
-	function Matrix3() {
+] ,function(klass,numerics) {
 
-		this.elements = [
-
-			1, 0, 0,
-			0, 1, 0,
-			0, 0, 1
-
-		];
-
-		if ( arguments.length > 0 ) {
-
-			console.error( 'Matrix3: the constructor no longer reads arguments. use .set() instead.' );
-
-		}
-
-	}
-
-	Object.assign( Matrix3.prototype, {
+	var Matrix3 = klass({
+		"klassName" : "Matrix3",
 
 		isMatrix3: true,
 
@@ -344,12 +329,29 @@ define([
 
 			return array;
 
+		},
+
+
+		"_construct" : function () {
+
+			this.elements = [
+
+				1, 0, 0,
+				0, 1, 0,
+				0, 0, 1
+
+			];
+
+			if ( arguments.length > 0 ) {
+
+				console.error( 'Matrix3: the constructor no longer reads arguments. use .set() instead.' );
+
+			}
+
 		}
 
-	} );
+	});
 
 
 	return numerics.Matrix3 = Matrix3;
-
-
 });

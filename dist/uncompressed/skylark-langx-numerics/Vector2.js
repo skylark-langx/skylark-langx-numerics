@@ -1,52 +1,10 @@
 define([
+	"skylark-langx-klass",
 	"./numerics"
-] ,function(numerics) {
+] ,function(klass,numerics) {
 
-
-	function Vector2( x, y ) {
-
-		this.x = x || 0;
-		this.y = y || 0;
-
-	}
-
-	Object.defineProperties( Vector2.prototype, {
-
-		"width": {
-
-			get: function () {
-
-				return this.x;
-
-			},
-
-			set: function ( value ) {
-
-				this.x = value;
-
-			}
-
-		},
-
-		"height": {
-
-			get: function () {
-
-				return this.y;
-
-			},
-
-			set: function ( value ) {
-
-				this.y = value;
-
-			}
-
-		}
-
-	} );
-
-	Object.assign( Vector2.prototype, {
+	var Vector2 = klass({
+		"klassName" : "Vector2",
 
 		set: function ( x, y ) {
 
@@ -63,7 +21,6 @@ define([
 			this.y = scalar;
 
 			return this;
-
 		},
 
 		setX: function ( x ) {
@@ -438,10 +395,58 @@ define([
 			this.y = x * s + y * c + center.y;
 
 			return this;
+		},
+
+		"_construct" : function ( x, y ) {
+
+			this.x = x || 0;
+			this.y = y || 0;
+
+		}
+
+
+	});
+
+
+	/*
+	Object.defineProperties( Vector2.prototype, {
+
+		"width": {
+
+			get: function () {
+
+				return this.x;
+
+			},
+
+			set: function ( value ) {
+
+				this.x = value;
+
+			}
+
+		},
+
+		"height": {
+
+			get: function () {
+
+				return this.y;
+
+			},
+
+			set: function ( value ) {
+
+				this.y = value;
+
+			}
 
 		}
 
 	} );
+	*/
+
+
 
 
 	return numerics.Vector2 = Vector2 ;

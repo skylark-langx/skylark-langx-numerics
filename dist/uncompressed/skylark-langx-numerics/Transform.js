@@ -1,10 +1,9 @@
 define([
-    "skylark-langx/langx",
+	"skylark-langx-klass",	
     "./numerics",
-	"./Matrix"
-], function(langx,numerics, Matrix) {
+], function(klass,numerics) {
 
-    var Transform = numerics.Transform = langx.klass({
+    var Transform =  klass({
         "klassName": "Transform",
 		"value": {
 			get : function(){
@@ -13,5 +12,5 @@ define([
 		}
 	});
 
-	return Transform;
+	return numerics.Transform =Transform;
 });

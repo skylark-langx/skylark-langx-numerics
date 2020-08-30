@@ -1,7 +1,9 @@
 define([
+	"skylark-langx-klass",
 	"./numerics",
 	"./Vector3"
 ] ,function(
+	klass,
 	numerics,
 	Vector3
 ) {
@@ -14,27 +16,7 @@ define([
 	var _y = new Vector3();
 	var _z = new Vector3();
 
-	function Matrix4() {
-
-		this.elements = [
-
-			1, 0, 0, 0,
-			0, 1, 0, 0,
-			0, 0, 1, 0,
-			0, 0, 0, 1
-
-		];
-
-		if ( arguments.length > 0 ) {
-
-			console.error( 'mathsMatrix4: the constructor no longer reads arguments. use .set() instead.' );
-
-		}
-
-	}
-
-	Object.assign( Matrix4.prototype, {
-
+	var Matrix4 = klass({
 		set: function ( n11, n12, n13, n14, n21, n22, n23, n24, n31, n32, n33, n34, n41, n42, n43, n44 ) {
 
 			var te = this.elements;
@@ -877,9 +859,30 @@ define([
 
 			return array;
 
+		},
+
+		"_construct" : function() {
+
+			this.elements = [
+
+				1, 0, 0, 0,
+				0, 1, 0, 0,
+				0, 0, 1, 0,
+				0, 0, 0, 1
+
+			];
+
+			if ( arguments.length > 0 ) {
+
+				console.error( 'mathsMatrix4: the constructor no longer reads arguments. use .set() instead.' );
+
+			}
+
 		}
 
-	} );
+	});
+
+
 
 
 	return numerics.Matrix4 =  Matrix4 ;

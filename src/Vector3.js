@@ -1,10 +1,12 @@
 define([
-	"skylark-langx-maths",
+	"skylark-langx-klass",
 	"./numerics",
+	"./maths",
 	"./Quaternion"
 ] ,function(
-	maths,
+	klass,
 	numerics,
+	maths,
 	Quaternion
 ) {
 
@@ -12,15 +14,8 @@ define([
 	var _vector = new Vector3();
 	var _quaternion = new Quaternion();
 
-	function Vector3( x, y, z ) {
-
-		this.x = x || 0;
-		this.y = y || 0;
-		this.z = z || 0;
-
-	}
-
-	Object.assign( Vector3.prototype, {
+	var Vector3 = klass({
+		"klassName" : "Vector3",
 
 		set: function ( x, y, z ) {
 
@@ -709,12 +704,19 @@ define([
 
 			return this;
 
+		},
+
+
+		"_construct" : function ( x, y, z ) {
+
+			this.x = x || 0;
+			this.y = y || 0;
+			this.z = z || 0;
+
 		}
 
-	} );
+	});
 
 
 	return numerics.Vector3 = Vector3;
-
-
 });

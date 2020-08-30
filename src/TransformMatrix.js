@@ -1,9 +1,8 @@
 define( [
-    "skylark-langx-objects",
     "skylark-langx-klass",
     "./numerics",
     "./Vector2"
-], function(objects,klass,numerics,Vector2){
+], function(klass,numerics,Vector2){
 	// reference easeljs/numerics/Matrix2D  and dojox/gfx/matrix
 	
 	var DEG_TO_RAD = Math.PI/180;
@@ -23,7 +22,7 @@ define( [
 	//|  0|  0| 1|
 	//|----------|
 	
-    var Matrix = numerics.Matrix = klass({
+    var TransformMatrix =  klass({
         "klassName": "TransformMatrix",
 
 		"_multiplyPoint"	: 	function(p){
@@ -540,8 +539,8 @@ define( [
 			return "[Matrix (m11="+_.m11+" m12="+_.m12+" m21="+_.m21+" m22="+_.m22+" dx="+_.dx+" dy="+_.dy+")]";
 		},
 		
-		"init" : function(m11, m12, m21, m22, dx, dy) {
-			var _ = this._;
+		"_construct" : function(m11, m12, m21, m22, dx, dy) {
+			var _ = this._ = {};
 			_.m11 = m11 || 1;
 			_.m12 = m12 || 0;
 			_.m21 = m21 || 0;
@@ -552,7 +551,7 @@ define( [
 
 	});
 	
-	objects.mixin(Matrix,{
+	Object.assign(Matrix,{
 		translate: function(a, b){
 			// summary:
 			//		forms a translation matrix
@@ -883,5 +882,5 @@ define( [
 	
 	});
 
-	return Matrix;
+	return numerics.TransformMatrix = TransformMatrix;
 });

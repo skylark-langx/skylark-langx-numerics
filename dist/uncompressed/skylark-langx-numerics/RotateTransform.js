@@ -1,9 +1,8 @@
 define([
-    "skylark-langx/langx",
     "./numerics",
 	"./Transform",
-	"./Matrix"
-],function(langx,numerics,Transform,Matrix) {
+	"./MatrixTransform"
+],function(numerics,Transform,Matrix) {
 
 
     var RotateTransform = numerics.RotateTransform = Transform.inherit({

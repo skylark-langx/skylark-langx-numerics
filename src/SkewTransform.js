@@ -1,11 +1,10 @@
 define([
-    "skylark-langx/langx",
     "../numerics",
     "./Transform",
-    "./Matrix"
-], function(Class, Transform, Matrix) {
+    "./MatrixTransform"
+], function(numerics, Transform, Matrix) {
 
-   var SkewTransform = numerics.SkewTransform = Transform.inherit({
+   var SkewTransform = Transform.inherit({
         "klassName": "SkewTransform",
 
         "value": {
@@ -32,14 +31,14 @@ define([
 
         transformBounds: /*Rect*/ function( /*Rect*/ rect) {},
 
-        "init": function( /*Number*/ skewX, /*Number*/ skewY) {
-            var _ = this._;
+        "_construct": function( /*Number*/ skewX, /*Number*/ skewY) {
+            var _ = this._ = {};
 
             _.skewX = skewX ? skewX : 0;
             _.skewY = skewY ? skewY : 0;
         }
     });
 
-    return SkewTransform;
+    return numerics.SkewTransform = SkewTransform;
 
 });

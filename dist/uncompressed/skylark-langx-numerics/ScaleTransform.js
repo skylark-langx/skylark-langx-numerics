@@ -1,11 +1,10 @@
 define([
-    "skylark-langx/langx",
     "./numerics",
     "./Transform",
-    "./Matrix"
-], function(langx,numerics, Transform, Matrix) {
+    "./MatrixTransform"
+], function(numerics, Transform, Matrix) {
 
-   var ScaleTransform = numerics.ScaleTransform = Transform.inherit({
+   var ScaleTransform =  Transform.inherit({
         "klassName": "ScaleTransform",
 
         "value": {
@@ -47,8 +46,8 @@ define([
 
         transformBounds: /*Rect*/ function( /*Rect*/ rect) {},
 
-        "init": function( /*Number*/ scaleX, /*Number*/ scaleY, /*Number*/ centerX, /*Number*/ centerY) {
-            var _ = this._;
+        "_construct": function( /*Number*/ scaleX, /*Number*/ scaleY, /*Number*/ centerX, /*Number*/ centerY) {
+            var _ = this._ = {};
 
             _.scaleX = scaleX ? scaleX : 1;
             _.scaleY = scaleY ? scaleY : 1;
@@ -57,6 +56,6 @@ define([
         }
     });
 
-    return ScaleTransform;
+    return numerics.ScaleTransform = ScaleTransform;
 
 });

@@ -1,15 +1,14 @@
 define([
-    "skylark-langx/langx",
     "./numerics",
     "./Transform",
-    "./Matrix"
-],function(langx,numerics,Transform,Matrix,Point,Rect) {
+    "./MatrixTransform"
+],function(numerics,Transform,Matrix,Point,Rect) {
 
     //|1   0   dx|
     //|0   1   dy|
     //|0   0    1|
 
-   var TranslateTransform = numerics.TranslateTransform = Transform.inherit({
+   var TranslateTransform =  Transform.inherit({
         "klassName": "TranslateTransform",
 
         "value": {
@@ -44,5 +43,5 @@ define([
         }
     });
 
-    return TranslateTransform;
+    return numerics.TranslateTransform =TranslateTransform;
 });	

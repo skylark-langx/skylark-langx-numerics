@@ -1,12 +1,9 @@
 define([
-    "skylark-langx/langx",
     "./numerics",
-	"./Transform",
-	"../Point",
-	"../Rect"
-],function(langx,numerics,Transform,Point,Rect) {
+	"./Transform"
+],function(numerics,Transform) {
 
-    var MatrixTransform = numerics.MatrixTransform = Transform.inherit({
+    var MatrixTransform =  Transform.inherit({
         "klassName": "MatrixTransform",
 
 		"value"	:	{
@@ -30,14 +27,14 @@ define([
 		//指定された境界ボックスを変換し、それをちょうど格納できる大きさの軸平行境界ボックスを返します。
 		transformBounds : /*Rect*/function(/*Rect*/rect) {
 		},		
-		"initialize" : function(/*Martix*/matrix) {
-            var _ = this._;
+		"_construct" : function(/*Martix*/matrix) {
+            var _ = this._ = {};
 			
 			_.matrix = matrix;
 		}
 				
 	});
 
-	return MatrixTransform;
+	return numerics.MatrixTransform = MatrixTransform;
 	
 });	

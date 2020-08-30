@@ -1,5 +1,21 @@
 define([
-	"./numerics"
+	"./numerics",
+	"./Euler",
+	"./maths",
+	"./Matrix3",
+	"./Matrix4",
+	"./MatrixTransform",
+	"./Plane",
+	"./Quaternion",
+	"./RotateTransform",
+	"./ScaleTransform",
+	"./SkewTransform",
+	"./Transform",
+	"./TransformMatrix",
+	"./TranslateTransform",
+	"./Vector2",
+	"./Vector3",
+	"./Vector4"
 ],function(numerics){
 	return numerics;
 });

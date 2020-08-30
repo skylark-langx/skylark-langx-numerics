@@ -1,8 +1,10 @@
 define([
+	"skylark-langx-klass",
 	"./numerics",
 	"./Matrix3",
 	"./Vector3"
 ] ,function(
+	klass,
 	numerics,
 	Matrix3,
 	Vector3
@@ -13,16 +15,8 @@ define([
 	var _vector2 = new Vector3();
 	var _normalMatrix = new Matrix3();
 
-	function Plane( normal, constant ) {
-
-		// normal is assumed to be normalized
-
-		this.normal = ( normal !== undefined ) ? normal : new Vector3( 1, 0, 0 );
-		this.constant = ( constant !== undefined ) ? constant : 0;
-
-	}
-
-	Object.assign( Plane.prototype, {
+	var Plane = klass({
+		"klassName" : "Plane",
 
 		set: function ( normal, constant ) {
 
@@ -225,11 +219,20 @@ define([
 
 			return plane.normal.equals( this.normal ) && ( plane.constant === this.constant );
 
+		},
+
+
+		"_construct" : function( normal, constant ) {
+
+			// normal is assumed to be normalized
+
+			this.normal = ( normal !== undefined ) ? normal : new Vector3( 1, 0, 0 );
+			this.constant = ( constant !== undefined ) ? constant : 0;
+
 		}
 
-	} );
+	});
 
 
 	return numerics.Plane = Plane;
-
 });

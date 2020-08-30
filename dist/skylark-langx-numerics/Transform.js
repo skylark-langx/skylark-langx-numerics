@@ -5,5 +5,5 @@
  * @link www.skylarkjs.org
  * @license MIT
  */
-define(["skylark-langx/langx","./numerics","./Matrix"],function(n,a,r){return a.Transform=n.klass({klassName:"Transform",value:{get:function(){return this._.value}}})});
+define(["skylark-langx-klass","./numerics"],function(n,r){var a=n({klassName:"Transform",value:{get:function(){return this._.value}}});return r.Transform=a});
 //# sourceMappingURL=sourcemaps/Transform.js.map
